@@ -1,11 +1,15 @@
 from collections import deque
 import sys
 
-# n, k = sys.stdin.readline().split()
-n = 7
-k = 3
+n, k = map(int,sys.stdin.readline().split())
 q = deque([i for i in range(1, int(n)+1)])
+
+answer = []
+
 while q:
-    print(q[k])
-    del q[k]
-# print(q)
+    for _ in range(k):
+        x = q.popleft()
+        q.append(x)
+    answer.append(q.pop())
+
+print("<" + ', '.join(map(str,answer)) + ">")
